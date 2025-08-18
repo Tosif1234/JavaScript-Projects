@@ -103,13 +103,24 @@ do {
 
 let password = "1234";
 
-        let oldPassword = prompt("Enter old password:");
-        let newPassword = prompt("Enter new password:");
+let oldPassword = prompt("Enter old password:");
+let newPassword = prompt("Enter new password:");
 
-        if (oldPassword === password) { 
-            password = newPassword;
-            console.log("Cafe Password changed successfully.");
-        } 
-        else {
-            console.log("Incorrect old password.");
-        }
+if (oldPassword === password) {
+ 
+    if (newPassword.length >= 8 && /[A-Z]/.test(newPassword) && /[!@#$%^&*]/.test(newPassword) && /\d/.test(newPassword)) 
+      {
+        password = newPassword;
+        console.log("Cafe Password changed successfully.");
+        document.write(`<br><b>Cafe Password Changed Successfully...</b>`);
+    } 
+    else {
+        console.log("New password must be at least 8 characters, contain one uppercase letter, one number, and one special character.");
+        document.write(`<br><b>New password must be at least 8 characters, contain one uppercase letter, one number, and one special character.</b>`);
+    }
+} 
+else {
+    console.log("Incorrect old password.");
+    document.write(`Incorrect old password`);
+}
+
