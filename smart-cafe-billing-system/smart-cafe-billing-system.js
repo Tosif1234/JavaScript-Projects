@@ -10,10 +10,10 @@ let output = document.getElementById("output");
 
 do {
   console.log("==== Smart Cafe Billing System ====");
-  console.log("1. Coffee (50/-)");
-  console.log("2. Tea (30/-)");
-  console.log("3. Sandwich (80/-)");
-  console.log("4. Pastry (100/-)");
+  console.log("1. Coffee (₹50)");
+  console.log("2. Tea (₹30)");
+  console.log("3. Sandwich (₹80)");
+  console.log("4. Pastry (₹100)");
   console.log("0. Exit....\n");
 
   choice = Number(prompt("Enter Your Choice : "));
@@ -65,27 +65,28 @@ do {
     console.log(`Highest priced item : ${highestPrice}`);
     console.log(`Lowest priced item : ${lowestPrice}`);
 
-    output.innerHTML += `<br><b>Thank You... Your Total Bill is ₹${totalBill}</b><br>`;
-    output.innerHTML += `Total Items Sold: ${totalItems}<br>`;
-    output.innerHTML += `Highest priced item: ₹${highestPrice}<br>`;
-    output.innerHTML += `Lowest priced item: ₹${lowestPrice}<br>`;
+    document.write(`<h2>Thank You... Your Total Bill is ₹${totalBill}</h2>`);
+    document.write(`<p>Total Items Sold: ${totalItems}</p>`);
+    document.write(`<p>Highest priced item: ₹${highestPrice}</p>`);
+    document.write(`<p>Lowest priced item: ₹${lowestPrice}</p>`);
 
-    output.innerHTML += `<br><b>GST & Discount</b><br>`;
-    output.innerHTML += `Subtotal: ₹${totalBill}<br>`;
-    output.innerHTML += `Discount: ₹${discount}<br>`;
-    output.innerHTML += `After Discount: ₹${finalAmount}<br>`;
-    output.innerHTML += `GST (5%): ₹${gst}<br>`;
-    output.innerHTML += `<b>Grand Total: ₹${grandTotal}</b><br>`;
+    document.write(`<h3>GST & Discount</h3>`);
+    document.write(`<p>Subtotal: ₹${totalBill}</p>`);
+    document.write(`<p>Discount: ₹${discount}</p>`);
+    document.write(`<p>After Discount: ₹${finalAmount}</p>`);
+    document.write(`<p>GST (5%): ₹${gst}</p>`);
+    document.write(`<b>Grand Total: ₹${grandTotal}</b><br>`);
 
     let avgPrice = totalBill / totalItems;
 
-    output.innerHTML += `<br><b>Report</b><br>`;
-    output.innerHTML += `Total Items Sold: ${totalItems}<br>`;
-    output.innerHTML += `Highest priced item: ₹${highestPrice}<br>`;
-    output.innerHTML += `Lowest priced item: ₹${lowestPrice}<br>`;
-    output.innerHTML += `Average priced item: ₹${avgPrice}<br>`;
+    document.write(`<h3>Report</h3>`);
+    document.write(`<p>Total Items Sold: ${totalItems}</p>`);
+    document.write(`<p>Highest priced item: ₹${highestPrice}</p>`);
+    document.write(`<p>Lowest priced item: ₹${lowestPrice}</p>`);
+    document.write(`<p>Average priced item: ₹${avgPrice}</p>`);
 
-    output.innerHTML += `<br><b>Cafe Password Changed Successfully...</b><br>`;
+    document.write(`<br><b>Cafe Password Changed Successfully...</b>`);
+
 
 
   } else {
