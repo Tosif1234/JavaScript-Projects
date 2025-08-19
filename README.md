@@ -1,4 +1,4 @@
-﻿# Project 5 : Smart Calculator
+﻿# Project 4 : Smart Calculator
 
  ---
 
@@ -285,4 +285,5 @@ It supports basic arithmetic operations with a clean UI and smooth button effect
 Below is an actual run of the program in the terminal:
 
 ![Program Output](Smart-Calculator/1.png)
+
 
