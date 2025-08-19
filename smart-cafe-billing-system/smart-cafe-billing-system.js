@@ -108,12 +108,12 @@ do {
     }
     console.log("==== Discount ====");
     console.log(`Subtotal: ₹${totalBill}`);
-    console.log(`Discount: ₹${discount}`);
+    console.log(`Discount: ₹${discount.toFixed(2)}`);
     console.log(`After Discount: ₹${totalBill - discount}`);
 
     document.write(`<h2>==== Discount ====</h2>`);
     document.write(`<p>Subtotal: ₹${totalBill}</p>`);
-    document.write(`<p>Discount: ₹${discount}</p>`);
+    document.write(`<p>Discount: ₹${discount.toFixed(2)}</p>`);
     document.write(`<p>After Discount: ₹${totalBill - discount}</p>`);
   } 
   else if (choice === 4) {
@@ -139,7 +139,7 @@ do {
     }
   } 
   else if (choice === 5) {
-    let avgPrice = totalItems > 0 ? (totalBill / totalItems).toFixed(2) : 0;
+    let avgPrice = totalItems > 0 ? (totalBill / totalItems) : "0.00";
     if (lowestPrice == 101) {
       lowestPrice = 0;
     }
