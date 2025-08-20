@@ -236,10 +236,11 @@ It supports basic arithmetic operations with a clean UI and smooth button effect
         }
 
         function setOperator(op) {
-            if (num1 !== "") {
-                operator = op;
-                display.value = num1 + " " + operator;
+            if (num1 !== "" && num2 !== "") {
+                calculate();
             }
+            operator = op;
+            display.value = num1 + " " + operator;
         }
         function calculate() {
             let result = 0;
@@ -285,5 +286,6 @@ It supports basic arithmetic operations with a clean UI and smooth button effect
 Below is an actual run of the program in the terminal:
 
 ![Program Output](Smart-Calculator/1.png)
+
 
 
