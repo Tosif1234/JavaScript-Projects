@@ -202,10 +202,11 @@
         }
 
         function setOperator(op) {
-            if (num1 !== "") {
-                operator = op;
-                display.value = num1 + " " + operator;
+            if (num1 !== "" && num2 !== "") {
+                calculate();
             }
+            operator = op;
+            display.value = num1 + " " + operator;
         }
         function calculate() {
             let result = 0;
