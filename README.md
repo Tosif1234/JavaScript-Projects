@@ -2,20 +2,36 @@
 
  ---
 
-A modern and stylish **Smart Calculator** built using **HTML, CSS, and JavaScript**.  
-It supports basic arithmetic operations with a clean UI and smooth button effects.  
+A modern, responsive **Smart Calculator** built with **HTML, CSS, and JavaScript**.  
+It performs basic arithmetic operations along with some advanced features like **Square, Cube, Factorial, and Odd/Even check**.  
 
 ---
 
-##  Features
+##  Features  
 
--  Perform basic operations: **Addition, Subtraction, Multiplication, Division, Modulus (%)**
--  **Delete (Del)** button to remove last input
--  **AC (All Clear)** button to reset calculator
--  Supports **decimal numbers**
--  **Limit input length** to 8 digits per number
--  Responsive design with a **dark theme**
--  Smooth **hover & click animations**
+**Basic Operations**  
+- Addition  
+- Subtraction  
+- Multiplication  
+- Division (with divide-by-zero error check)  
+- Modulus  
+
+**Advanced Operations**  
+- Square (`x²`)  
+- Cube (`x³`)  
+- Factorial (`n!`)  
+- Odd/Even check  
+
+**User-Friendly Controls**  
+- `AC` → Clear display  
+- `Del` → Delete last entry  
+- Decimal & double zero (`00`) support  
+- Smart handling of operators and numbers  
+
+**UI/UX Enhancements**  
+- Responsive & modern glassmorphism-inspired design  
+- Hover and active button effects  
+- Error handling with clean messages
 
 ---
 
@@ -372,6 +388,7 @@ It supports basic arithmetic operations with a clean UI and smooth button effect
 Below is an actual run of the program in the terminal:
 
 ![Program Output](Smart-Calculator/1.png)
+
 
 
 
