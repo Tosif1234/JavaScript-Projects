@@ -334,10 +334,12 @@ It supports basic arithmetic operations with a clean UI and smooth button effect
                 display.value = "Error";
                 return;
             }
-            let fact = 1;
-            for (let i = 1; i <= value; i++) {
-                fact *= i;
+            function recursiveFact(n) {
+                if (n === 0 || n === 1) return 1;
+                return n * recursiveFact(n - 1);
             }
+
+            let fact = recursiveFact(value);
             display.value = fact;
             num1 = display.value;
             num2 = "";
@@ -370,6 +372,7 @@ It supports basic arithmetic operations with a clean UI and smooth button effect
 Below is an actual run of the program in the terminal:
 
 ![Program Output](Smart-Calculator/1.png)
+
 
 
 
