@@ -55,7 +55,7 @@ This project solves the problem by providing:
 
 ---
 # Our Code 
-```Javascript
+```HTML
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -345,13 +345,12 @@ This project solves the problem by providing:
 ## 🖼 Output Screenshots
 
 ### 🔹 Main Slider Interface
-![Main Slider](./screenshots/main-slider.png)
+![Main Slider](smart-image-slider/images/2.png)
+![Main Slider](smart-image-slider/images/3.png)
 
-### 🔹 Slide Changed (Console Log)
-![Console Log](./screenshots/console-log.png)
+### 🔹 (Console Log)
+![Console Log](smart-image-slider/images/1.png)
 
-### 🔹 Adding New Image
-![Add Image](./screenshots/add-image.png)
 
 ---
 
@@ -359,3 +358,4 @@ This project solves the problem by providing:
 1. Clone this repository:
    ```bash
    git clone https://github.com/your-username/smart-image-slider.git
+
