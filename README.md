@@ -1,47 +1,275 @@
-﻿# Project 1 : Basic Calculator
+﻿# Project 7 : Smart Task & Habit Tracker
 
  ---
- 
-## Arithmetic Calculator using JavaScript
 
-
-This is a **simple arithmetic calculator** project written in **JavaScript** that performs basic operations like:
-
-- Addition
-- Subtraction
-- Multiplication
-- Division (with divide-by-zero check using ternary operator)
-- Modulus (with divide-by-zero check)
+A simple web application to manage tasks and habits. Users can add, update, delete, search, and filter tasks. Special study habits track streaks.
 
 ---
+## Features
+- Add tasks with title, description, category, due date, and status.
+- Special handling for Study habits with streak tracking.
+- Mark tasks as Completed or delete tasks.
+- Filter tasks by status: Pending, Completed, Overdue.
+- Search tasks by title or category.
+- Dashboard shows total tasks, pending, overdue, completed, and progress bar.
+- Responsive design using Bootstrap 5.
 
-## Project Features
+## Technologies
+- HTML5 & CSS3
+- JavaScript (ES6)
+- Bootstrap 5
+- Bootstrap Icons
 
-- Clean and readable output in the console
-- Use of **template literals** (`` `${}` ``) for better formatting
-- **Ternary operator** used to handle divide-by-zero cases gracefully
-- Valid mathematical expressions with correct labels and spacing
-- Designed for **beginner-level JavaScript learners**
+## How to Use
+1. Open `index.html` in a browser.
+2. Fill the form to add a task.
+3. Use Complete/Delete buttons on task cards.
+4. Search or filter tasks using input box and dropdown.
+5. Dashboard updates automatically.
 
----
+
+## Classes
+- `Task`: Basic task with title, description, category, due date, status, and completion method.
+- `SpecialHabit`: Extends Task, tracks streaks, and custom completion message.
+
+## Future Enhancements
+- Save tasks to localStorage.
+- Edit existing tasks.
+- Task reminders.
+- Priority levels.
+- Calendar view for tasks and habits.
 
 ## Our Code 
 
-```javascript
-let A = 70, B = 30;
+```HTML
+    <!DOCTYPE html>
+    <html lang="en">
 
-console.log("\n==== Arithmetic Calculator ====");
-console.log(`Value of A: ${A}`);
-console.log(`Value of B: ${B}`);
-console.log("-----------------------------");
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Smart Task & Habit Tracker</title>
+        <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="stylesheet" href="./assets/css/bootstrap-icons-min.css">
 
-console.log(`1. Addition       (A + B) :  ${A} + ${B} = ${A + B}`);
-console.log(`2. Subtraction    (A - B) :  ${A} - ${B} = ${A - B}`);
-console.log(`3. Multiplication (A * B) :  ${A} * ${B} = ${A * B}`);
-console.log(`4. Division       (A / B) :  ${(B != 0) ? `${A} / ${B} = ${A / B}` : "Cannot divide by zero"}`);
-console.log(`5. Modulus        (A % B) :  ${(B != 0) ? `${A} % ${B} = ${A % B}` : "Cannot divide by zero"}`);
+    </head>
 
-console.log("-----------------------------");
+    <body class="bg-light">
+
+        <div class="container py-4">
+            <h1 class="text-center mb-4 text-primary">Smart Task & Habit Tracker</h1>
+
+            <form id="taskForm" class="card p-3 shadow-sm mb-4">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <input type="text" id="title" class="form-control" placeholder="Task Title">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" id="desc" class="form-control" placeholder="Description">
+                    </div>
+                    <div class="col-md-4">
+                        <select id="category" class="form-select">
+                            <option value="">Select Category</option>
+                            <option value="Work">Work</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Study">Study</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="date" id="dueDate" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <select id="status" class="form-select">
+                            <option value="Pending">Pending</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Overdue">Overdue</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-3 text-end">
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                </div>
+            </form>
+
+            <!-- Search & Filter -->
+            <div class="d-flex justify-content-between mb-3">
+                <input type="text" id="search" class="form-control w-50" placeholder="Search task...">
+                <select id="filter" class="form-select w-25">
+                    <option value="all">All</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Overdue">Overdue</option>
+                </select>
+            </div>
+
+            <!-- Dashboard -->
+            <div class="container my-4">
+                <h3 class="text-center text-success fw-bold">Dashboard...</h3>
+                <div class="row text-center mb-4">
+
+                    <div class="col-md-3 mb-3">
+                        <div class="card shadow-sm border-0 rounded-3 p-3 bg-light">
+                            <h6 class="fw-bold">All Task</h6>
+                            <p id="totalTasks" class="fs-4 text-danger fw-bold">0</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <div class="card shadow-sm border-0 rounded-3 p-3 bg-light">
+                            <h6 class="fw-bold">Pending</h6>
+                            <p id="pendingTasks" class="fs-4 text-warning fw-bold">0</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <div class="card shadow-sm border-0 rounded-3 p-3 bg-light">
+                            <h6 class="fw-bold">Overdue</h6>
+                            <p id="overdueTasks" class="fs-4 text-danger fw-bold">0</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <div class="card shadow-sm border-0 rounded-3 p-3 bg-light">
+                            <h6 class="fw-bold">Completed</h6>
+                            <p id="completedTasks" class="fs-4 text-success fw-bold">0</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Progress Bar -->
+                <h5 class="text-center text-secondary">Progress</h5>
+                <div class="progress" style="height: 25px;">
+                    <div id="progressBar" class="progress-bar bg-success fw-bold" role="progressbar" style="width: 0%;"
+                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                        0%
+                    </div>
+                </div>
+            </div>
+
+            <div id="taskList" class="row g-3"></div>
+        </div>
+        <script src="./assets/js/bootstrap.bundle.min.js"></script>
+        <script>
+            class Task {
+                constructor(title, desc, category, dueDate, status) {
+                    this.title = title;
+                    this.desc = desc;
+                    this.category = category;
+                    this.dueDate = dueDate;
+                    this.status = status || "Pending";
+                }
+                markComplete() {
+                    this.status = "Completed";
+                }
+            }
+
+            class SpecialHabit extends Task {
+                constructor(title, desc, category, dueDate, streak) {
+                    super(title, desc, category, dueDate);
+                    this.streak = streak;
+                }
+                markComplete() {
+                    this.status = `Habit Completed (Streak: ${this.streak} days)`;
+                }
+            }
+
+            let tasks = [];
+
+            document.getElementById("taskForm").addEventListener("submit", (e) => {
+                e.preventDefault();
+                let t = document.getElementById("title").value.trim();
+                let d = document.getElementById("desc").value.trim();
+                let c = document.getElementById("category").value;
+                let due = document.getElementById("dueDate").value;
+                let s = document.getElementById("status").value;
+
+                if (!t || !d || !c || !due) {
+                    alert("Please fill all fields!");
+                    return;
+                }
+
+                let task = (c === "Study") ? new SpecialHabit(t, d, c, due, 7) : new Task(t, d, c, due, s);
+                tasks.push(task);
+
+                renderTasks();
+                updateDashboard();
+                e.target.reset();
+            });
+
+            function renderTasks() {
+                let taskList = document.getElementById("taskList");
+                taskList.innerHTML = "";
+
+                let searchVal = document.getElementById("search").value.toLowerCase();
+                let filterVal = document.getElementById("filter").value;
+
+                let filtered = tasks.filter(task => {
+                    let matchSearch = task.title.toLowerCase().includes(searchVal) || task.category.toLowerCase().includes(searchVal);
+                    let matchFilter = (filterVal === "all" || task.status === filterVal);
+                    return matchSearch && matchFilter;
+                    
+                });
+
+                filtered.forEach((task, i) => {
+                    let card = document.createElement("div");
+                    card.className = "col-md-4";
+                    card.innerHTML = `
+            <div class="card shadow-sm p-3 h-100">
+                <h5 class="text-primary">${task.title}</h5>
+                <p>${task.desc}</p>
+                <p><b>Category:</b> ${task.category}</p>
+                <p><b>Due:</b> ${task.dueDate}</p>
+                <p><b>Status:</b> ${task.status}</p>
+                <div class="d-flex justify-content-between">
+                <button class="btn btn-success btn-sm" onclick="completeTask(${i})"><i class="bi bi-check-circle pe-1 "></i> Complete</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteTask(${i})"><i class="bi bi-trash pe-1"></i>Delete</button>
+                </div>
+            </div>
+            `;
+                    taskList.appendChild(card);
+                });
+            }
+
+            function completeTask(index) {
+                tasks[index].markComplete();
+                renderTasks();
+                updateDashboard();
+            }
+
+            function deleteTask(index) {
+                tasks.splice(index, 1);
+                renderTasks();
+                updateDashboard();
+            }
+
+            function updateDashboard() {
+                let total = tasks.length;
+                let completed = tasks.filter(t => t.status.includes("Complete")).length;
+                let pending = tasks.filter(t => t.status === "Pending").length;
+                let overdue = tasks.filter(t => new Date(t.dueDate) < new Date() && t.status !== "Completed").length;
+
+                document.getElementById("totalTasks").textContent = total;
+                document.getElementById("completedTasks").textContent = completed;
+                document.getElementById("pendingTasks").textContent = pending;
+                document.getElementById("overdueTasks").textContent = overdue;
+
+                // Update progress bar
+                let percent = total ? Math.round((completed / total) * 100) : 0;
+                let progressBar = document.getElementById("progressBar");
+                progressBar.style.width = percent + "%";
+                progressBar.setAttribute("aria-valuenow", percent);
+                progressBar.textContent = percent + "%";
+            }
+
+
+            document.getElementById("search").addEventListener("input", renderTasks);
+            document.getElementById("filter").addEventListener("change", renderTasks);
+        </script>
+    </body>
+
+    </html>
 
 ```
 
@@ -49,4 +277,8 @@ console.log("-----------------------------");
 
 Below is an actual run of the program in the terminal:
 
-![Program Output](Basic-Calculator/image.png)
+![Program Output](Smart-Task-Habit-Tracker/assets/images/1.png)
+
+![Program Output](Smart-Task-Habit-Tracker/assets/images/2.png)
+
+
