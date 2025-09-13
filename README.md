@@ -29,7 +29,7 @@ A simple web application that displays a countdown to a specific date and rotate
 
 ## Our Code 
 
-```jHTML
+```HTML
 <!DOCTYPE html>
 <html lang="en">
 
@@ -286,5 +286,9 @@ A simple web application that displays a countdown to a specific date and rotate
 
 Below is an actual run of the program in the terminal:
 
-![Program Output](Basic-Calculator/image.png)
+![Program Output](countdown-quote-Application/images/1.png)
+
+![Program Output](countdown-quote-Application/images/2.png)
+
+
 
