@@ -1,47 +1,284 @@
-﻿# Project 1 : Basic Calculator
+﻿# Project 8 : Countdown & Quotes App
 
  ---
- 
-## Arithmetic Calculator using JavaScript
 
+A simple web application that displays a countdown to a specific date and rotates motivational quotes. Users can start/pause the countdown and navigate through quotes manually or automatically.
 
-This is a **simple arithmetic calculator** project written in **JavaScript** that performs basic operations like:
+## Features
+- Countdown timer to a specific date (New Year 2026 by default)
+- Start and pause countdown
+- Motivational quotes slider
+- Manual next/prev buttons and automatic quote rotation every 3 seconds
+- Modal popup welcoming users
+- Responsive design with smooth animations
 
-- Addition
-- Subtraction
-- Multiplication
-- Division (with divide-by-zero check using ternary operator)
-- Modulus (with divide-by-zero check)
+## Technologies
+- HTML5
+- CSS3
+- JavaScript (ES6)
+- CSS animations for modal popup
 
----
-
-## Project Features
-
-- Clean and readable output in the console
-- Use of **template literals** (`` `${}` ``) for better formatting
-- **Ternary operator** used to handle divide-by-zero cases gracefully
-- Valid mathematical expressions with correct labels and spacing
-- Designed for **beginner-level JavaScript learners**
+## How to Use
+1. Open `index.html` in a web browser.
+2. Countdown starts automatically.
+3. Use **Start/Pause** buttons to control the timer.
+4. Quotes automatically change every 3 seconds or use **Prev/Next** buttons.
+5. Close the welcome modal by clicking the **X** button.
 
 ---
 
 ## Our Code 
 
-```javascript
-let A = 70, B = 30;
+```jHTML
+<!DOCTYPE html>
+<html lang="en">
 
-console.log("\n==== Arithmetic Calculator ====");
-console.log(`Value of A: ${A}`);
-console.log(`Value of B: ${B}`);
-console.log("-----------------------------");
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown & Quotes App</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-console.log(`1. Addition       (A + B) :  ${A} + ${B} = ${A + B}`);
-console.log(`2. Subtraction    (A - B) :  ${A} - ${B} = ${A - B}`);
-console.log(`3. Multiplication (A * B) :  ${A} * ${B} = ${A * B}`);
-console.log(`4. Division       (A / B) :  ${(B != 0) ? `${A} / ${B} = ${A / B}` : "Cannot divide by zero"}`);
-console.log(`5. Modulus        (A % B) :  ${(B != 0) ? `${A} % ${B} = ${A % B}` : "Cannot divide by zero"}`);
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      color: #fff;
+      padding: 20px;
+    }
 
-console.log("-----------------------------");
+    .container {
+      max-width: 800px;
+      width: 100%;
+      margin-top: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    .heading h1 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    #countdown {
+      font-size: 1.4rem;
+      margin: 15px 0 25px;
+      font-weight: bold;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      border-radius: 12px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .start-btn {
+      background: linear-gradient(135deg, #38ef7d, #11998e);
+      color: white;
+    }
+
+    .pause-btn {
+      background: linear-gradient(135deg, #56ccf2, #2f80ed);
+      color: white;
+    }
+
+    .control-btn {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    #quoteBox {
+      font-size: 1.2rem;
+      margin: 15px 0;
+      color: #ffe;
+      font-style: italic;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal-content {
+      background: white;
+      color: #333;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      animation: popIn 0.4s ease-in-out;
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #ff4b5c;
+    }
+
+    .close-btn:hover {
+      color: #d90429;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="heading">
+      <h1>Countdown To New Year</h1>
+    </div>
+    <h1 id="countdown"></h1>
+    <div class="control-btn">
+      <button id="startBtn" class="btn start-btn">Start</button>
+      <button id="pauseBtn" class="btn pause-btn">Pause</button>
+    </div>
+
+    <div class="heading">
+      <h1>Quotes Slider</h1>
+    </div>
+    <h4 id="quoteBox"></h4>
+    <div class="control-btn">
+      <button id="prevQuote" class="btn start-btn">Prev</button>
+      <button id="nextQuote" class="btn pause-btn">Next</button>
+    </div>
+  </div>
+
+  <div class="modal" id="myModal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h3>Welcome to Countdown & Quotes App - <b> Stay motivated!</b></h3>
+    </div>
+  </div>
+
+  <script>
+    let countdownEl = document.getElementById("countdown");
+    let startBtn = document.getElementById("startBtn");
+    let pauseBtn = document.getElementById("pauseBtn");
+    let targetDate = new Date("Jan 1, 2026 00:00:00").getTime();
+    let countdownInterval;
+    let isRunning = true;
+
+    function updateCountdown() {
+      let now = new Date().getTime();
+      let distance = targetDate - now;
+
+      if (distance <= 0) {
+        clearInterval(countdownInterval);
+        countdownEl.textContent = "Time’s up! The event has started ";
+        return;
+      }
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownEl.textContent = `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
+    }
+
+    window.onload = () => {
+      countdownInterval = setInterval(updateCountdown, 1000);
+      updateCountdown();
+      isRunning = true;
+    };
+
+    startBtn.addEventListener("click", () => {
+      if (!isRunning) {
+        countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+        isRunning = true;
+      }
+    });
+
+    pauseBtn.addEventListener("click", () => {
+      clearInterval(countdownInterval);
+      isRunning = false;
+    });
+
+    let quotes = [
+      "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+      "Believe in yourself and all that you are.",
+      "Do not watch the clock. Do what it does. Keep going.",
+      "Stay positive, work hard, make it happen."
+    ]
+    let index = 0;
+    let quoteBox = document.getElementById("quoteBox");
+    function quotesSlide() {
+      quoteBox.textContent = quotes[index];
+    }
+    function prevQuote() {
+      index = (index === 0) ? quotes.length - 1 : index - 1;
+      quotesSlide();
+    }
+    function nextQuote() {
+      index = (index === quotes.length - 1) ? 0 : index + 1;
+      quotesSlide();
+    }
+    quotesSlide();
+    document.getElementById("prevQuote").addEventListener("click", prevQuote);
+    document.getElementById("nextQuote").addEventListener("click", nextQuote);
+    setInterval(nextQuote, 3000);
+
+
+    let modal = document.getElementById("myModal");
+    let closeModal = document.getElementById("closeModal");
+    setTimeout(() => {
+      modal.style.display = "flex";
+    }, 4000);
+    closeModal.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+  </script>
+</body>
+</html>
 
 ```
 
@@ -50,3 +287,4 @@ console.log("-----------------------------");
 Below is an actual run of the program in the terminal:
 
 ![Program Output](Basic-Calculator/image.png)
+
