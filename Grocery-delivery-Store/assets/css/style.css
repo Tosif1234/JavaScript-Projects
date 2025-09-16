@@ -1,0 +1,112 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* Product Card Hover Effect */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Zoom on Hover */
+.card-img img{
+  transition: transform 0.4s ease;
+}
+
+.card-img:hover {
+    scale: scale(1.1);
+}
+.card-img:hover img{
+  transform: scale(1.1);
+}
+
+/* Button Hover Effect */
+.btn{
+    position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.3s ease-in-out;
+}
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #333333; 
+  transition: all 0.4s ease-in-out;
+  z-index: -1;
+}
+.btn:hover {
+  color: #fff; 
+}
+.btn:hover::after {
+  left: 0; 
+}
+/* Banner Animation */
+.banner {
+  position: relative;
+  height: 620px;
+  background-image: url("../image/banner/banner-img.jpg");
+  background-size: cover;
+}
+.banner-content{
+
+
+}
+.banner h1 {
+  animation: fadeInDown 1s ease;
+}
+
+.banner p {
+  animation: fadeInUp 1.2s ease;
+}
+
+.banner a {
+  animation: fadeIn 1.4s ease;
+}
+.banner img:hover {
+  transform: scale(1.05);
+}
+
+
+/* Keyframes */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
