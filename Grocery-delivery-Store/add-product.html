@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Product - FreshMart</title>
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/bootstrap-icons-min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+
+  <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+            <div class="container">
+                <!-- Left: Logo -->
+                <a class="navbar-brand fw-bold text-success fs-3" href="./index.html">
+                    <i class="bi bi-basket2-fill fs-2"></i> FreshMart
+                    <!-- <img src="./assets/image/banner/logo.png" alt=""> -->
+                </a>
+
+                <!-- Mobile Toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Right: Links -->
+                <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center fw-medium">
+
+                        <li class="nav-item px-2">
+                            <a class="nav-link active" href="./index.html">Home</a>
+                        </li>
+
+                        <li class="nav-item px-2">
+                            <a class="nav-link" href="./add-product.html">Manage Product</a>
+                        </li>
+
+                        <li class="nav-item px-2">
+                            <a class="nav-link" href="./cart.html">Cart</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+  <main>
+    <!-- Update Product Form -->
+    <section class="update-product" id="productForm">
+      <div class="container my-5">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h3 class="card-title text-center text-success mb-4" id="formTitle">Add Product</h3>
+
+                <form id="addProduct">
+                  <!-- Product Id -->
+                  <div class="mb-3">
+                    <label for="productId" class="form-label">Product Id</label>
+                    <input type="number" class="form-control" id="productId" required>
+                  </div> 
+                  <!-- Product Name -->
+                  <div class="mb-3">
+                    <label for="productName" class="form-label">Product Name</label>
+                    <input type="text" class="form-control" id="productName" required>
+                  </div>
+
+                  <!-- Category -->
+                  <div class="mb-3">
+                    <label for="productCategory" class="form-label">Category</label>
+                    <select class="form-select" id="productCategory" required>
+                      <option value="" selected>Choose category</option>
+                      <option value="Fruits">Fruits</option>
+                      <option value="Vegetables">Vegetables</option>
+                      <option value="Dairy">Dairy</option>
+                      <option value="Snacks">Snacks</option>
+                      <option value="grains">Grains</option>
+                    </select>
+                  </div>
+
+                  <!-- Price -->
+                  <div class="mb-3">
+                    <label for="productPrice" class="form-label">Price (₹)</label>
+                    <div class="input-group">
+                    <input type="number" class="form-control" id="productPrice" placeholder="Enter Price" required>
+                    <select   select class="form-select" id="productUnit" required>
+                        <option value="Kg">Kg</option>
+                        <option value="Litre">Litre</option>
+                        <option value="Piece">Piece</option>
+                        <option value="Pack">Pack</option>
+                    </select>
+                    </div>
+                  </div>
+
+                  <!-- Image URL -->
+                  <div class="mb-3">
+                    <label for="productImage" class="form-label">Image URL</label>
+                    <input type="url" class="form-control" id="productImage">
+                  </div>
+
+                  <!-- Description -->
+                  <div class="mb-3">
+                    <label for="productDescription" class="form-label">Description</label>
+                    <textarea class="form-control" id="productDescription"></textarea>
+                  </div>
+
+                  <!-- Update Button -->
+                  <div class="d-grid">
+                    <button type="submit" class="btn btn-success" id="formBtn">Add Product</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products List -->
+    <section class="product-list">
+      <div class="container">
+        <div class="row justify-content-center mt-5">
+          <div class="col-md-10">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h3 class="card-title text-center text-success mb-4">Products List</h3>
+                <table class="table table-hover table-bordered align-middle">
+                  <thead class="table-success">
+                    <tr>
+                      <th>#</th>
+                      <th>Product</th>
+                      <th>Category</th>
+                      <th>Price (₹)</th>
+                      <th>Image</th>
+                      <th>Description</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="productTable">
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-3 bg-light mt-4 bottom-0 w-100">
+    <p class="mb-0">&copy; 2025 FreshMart. All rights reserved.</p>
+  </footer>
+
+  <script src="./assets/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/js/script.js"></script>
+  <script>
+    addProduct();
+    viewProduct();
+  </script>
+</body>
+</html>
