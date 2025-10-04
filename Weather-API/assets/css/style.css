@@ -1,0 +1,70 @@
+    body {
+      font-family: "Montserrat", sans-serif;
+      background: #f8f9fa;
+      min-height: 100vh;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .weather-box {
+      background: #fff;
+      border-radius: 18px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .weather-title {
+      font-weight: 700;
+      font-size: 2rem;
+      color: #007bff;
+    }
+    .weather-desc{
+        color: rgba(108, 117, 125, 1);
+    }
+    .form-control{
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        padding: 10px 15px;
+        font-weight: 400;
+    }
+    .temp-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      background-color: #e6f2ff;
+      border-radius: 10px;
+      padding: 15px;
+    }
+    .temp-main {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+    .icon-large {
+      padding-top: 5px;
+      font-size: 60px;
+      color: #007bff;
+    }
+    .weather-card {
+      border-radius: 12px;
+      background: #FAFAFA;
+      border: 1px solid #E0E0E0;
+      text-align: center;
+      padding: 15px;
+      transition: 0.3s;
+    }
+    .weather-card:hover {
+      background: #eef4ff;
+      transform: scale(1.00);
+    }
+    .btn{
+        background-color: #007bff;
+        border-radius: 8px;
+        padding: 12px 0;
+        transition: background-color 0.3s;
+    }
+    .weather-card i {
+      font-size: 24px;
+      color: #007bff;
+    }
