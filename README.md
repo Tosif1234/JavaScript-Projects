@@ -89,8 +89,37 @@ cd ResultBoard
 
 - Persistent Data – All data synced with MockAPI in real-time.
 
-## 🧑‍💻 Author
+## 👨‍💻 Author
 
 - Tosif Kureshi
+- Built with ❤️ using HTML, CSS, JS, and Bootstrap.
+- 📍 India
+
+## 📸 Sample Output Screenshot
+
+Below is an actual run of the program in the terminal:
+
+## Dashboard
+
+![Program Output](/Reasult-Board-API/assets/images/1.png)
+
+## All Countries
+
+![Program Output](/Reasult-Board-API/assets/images/2.png)
+
+## Error Hanndling...
+
+![Program Output](/Reasult-Board-API/assets/images/3.png)
+
+![Program Output](/Reasult-Board-API/assets/images/4.png)
+
+![Program Output](/Reasult-Board-API/assets/images/5.png)
+
+![Program Output](/Reasult-Board-API/assets/images/6.png)
+
+![Program Output](/Reasult-Board-API/assets/images/7.png)
+
+![Program Output](/Reasult-Board-API/assets/images/8.png)
 # 📸 Screenshots
+
 
