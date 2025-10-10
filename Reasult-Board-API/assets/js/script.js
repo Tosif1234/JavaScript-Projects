@@ -4,7 +4,7 @@ const API_BASE = "https://68e76f2110e3f82fbf3f1df1.mockapi.io/api/result";
 let editId = null;
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-// ===== UTILITY FUNCTIONS =====
+// Utitility Functions
 function toggleForm(type) {
   document
     .getElementById("signupSection")
@@ -49,7 +49,6 @@ async function signup() {
     localStorage.setItem("currentUser", JSON.stringify(currentUser));
     alert("Signup successful! You can now log in.");
 
-    // Optionally auto-login and go to dashboard
     showDashboard();
   } catch (error) {
     console.error("Signup Error:", error);
@@ -279,4 +278,5 @@ async function deleteResult(id) {
 
 // Start the application
 checkLogin();
+
 
