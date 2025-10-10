@@ -1,6 +1,4 @@
-// =================================================================
-// ===== API BASE URL - APNA MOCKAPI.IO KA BASE URL YAHAN DALEIN =====
-// =================================================================
+
 const API_BASE = "https://68e76f2110e3f82fbf3f1df1.mockapi.io/api/result";
 
 let editId = null;
@@ -281,3 +279,4 @@ async function deleteResult(id) {
 
 // Start the application
 checkLogin();
+
